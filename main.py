@@ -1,7 +1,6 @@
 import telebot 
-import customers_db as cdb
+import db.customers_db as cdb
 import sqlite3
-
 
 
 
@@ -64,6 +63,7 @@ def answer(message):
             cdb.change_status('DEFAULT')
             cdb.connection.commit()
             bot.send_message(message.chat.id, 'Никней успешно сменен')
+            
         case 'ADD_PLAYER_NAME':
             cdb.change_player_atribute(message.chat.id, 'name', message.text)
             cdb.change_status(message.chat.id, 'ADD_PLAYER_SURNAME')
